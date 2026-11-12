@@ -1,0 +1,10 @@
+# Local Kubernetes cluster for development, running in Docker via kind.
+#
+# Create:  kind create cluster --config cluster/kind-config.yaml
+# Delete:  kind delete cluster --name workout-logger
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: workout-logger
+nodes:
+  - role: control-plane   # runs Kubernetes itself (API server, scheduler, ...)
+  - role: worker          # runs your app's containers
