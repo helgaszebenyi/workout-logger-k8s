@@ -1,0 +1,14 @@
+# A stable name and address for the API pods: http://api:8080 inside the namespace.
+# This is the address nginx in the web container already forwards /api to.
+apiVersion: v1
+kind: Service
+metadata:
+  name: api
+  namespace: workout-logger
+spec:
+  selector:
+    app: api            # send traffic to pods with this label
+  ports:
+    - name: http
+      port: 8080        # the port other pods call
+      targetPort: http  # the container's port named "http"
